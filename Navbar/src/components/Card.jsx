@@ -11,6 +11,7 @@ function Card(props) {
             borderRadius: "10px",
             gap: "10px",
             margin: "20px",
+            marginTop: "20px",
         }}>
             <img src={props.productimage} alt="Product" style={{ width: "100%", height: "200px", borderRadius: "10px 10px 0 0" }} />
             <h2 style={{ padding: "10px" }}>{props.productname}</h2>

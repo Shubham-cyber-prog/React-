@@ -2,10 +2,18 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import Cart from "./components/Cart";
+import Products from "./components/MainLanding";
+import MainLanding from "./components/MainLanding";
 
 const App = () => {
   return (
-    <div>
+    <div 
+    style ={{
+      width:"100%",
+      height:"100%",
+      backgroundColor:"black",
+    }}
+    >
       <Navbar />
 
       <div
@@ -29,6 +37,8 @@ const App = () => {
           productprice={29.99}
         />
 
+        <Cart
+          productimage="https://m.media-amazon.com/images/I/61WM6IDaBPL._SX522_.jpg"
         <Card
           productimage="https://th.bing.com/th/id/OIP.iDWeV75PBxklN6u-97Pb6AHaEZ?w=264&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
           productname="Room 3"
@@ -110,6 +120,7 @@ const App = () => {
           productDelivery="Free Delivery"
           producttitle="Wednesday,June 24"
         />
+        <MainLanding />      
       </div>
     </div>
   );

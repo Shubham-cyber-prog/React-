@@ -5,16 +5,17 @@ function Navbar() {
   return (
     <div
       style={{
-        backgroundColor: "black",
+        backgroundColor: "white",
         height: "60px",
         width: "100%",
         padding: "15px 30px",
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+        borderRadius: "15px",
       }}
     >
-      <h1 style={{ color: "green"}}>N</h1>
+      <h1 style={{ color: "cyan", fontSize: "30px" }}>Navbar</h1>
 
       <div
         style={{
@@ -22,21 +23,21 @@ function Navbar() {
           gap: "20px",
         }}
       >
-        <a style={{  color: "white", padding: "10px 20px", marginRight: "10px," }} href="/">
+        <a style={{  color: "cyan", padding: "10px 20px", marginRight: "10px," }} href="/">
           Home
         </a>
-        <a style={{  color: "white", padding: "10px 20px", marginRight: "10px" }} href="/about">
+        <a style={{  color: "cyan", padding: "10px 20px", marginRight: "10px" }} href="/Navbar/src/components/MainLanding.jsx">
           Shop
         </a>
-        <a style={{  color: "white", padding: "10px 20px", marginRight: "10px" }} href="/Blog">
+        <a style={{  color: "cyan", padding: "10px 20px", marginRight: "10px" }} href="/Blog">
           Blog
         </a>
 
-         <a style={{  color: "white", padding: "10px 20px", marginRight: "10px" }} href="/about">
+         <a style={{  color: "cyan", padding: "10px 20px", marginRight: "10px" }} href="/about">
           About
         </a>
 
-         <a style={{  color: "white",padding: "10px 20px", marginRight: "10px" }} href="/contact">
+         <a style={{  color: "cyan",padding: "10px 20px", marginRight: "10px" }} href="/contact">
           Contact
         </a>
         
