@@ -125,7 +125,7 @@ import { useState } from "react"
    
 
 
- const MainLanding = () => {
+ const MainLanding = ({cart, setCart}) => {
     const [products, setProducts] = useState(product);
     function increaseQuantity(id) {
         const updatedProducts = products.map((product) => {
@@ -137,27 +137,9 @@ import { useState } from "react"
         setProducts(updatedProducts);
     } 
   
-//add to cart 
-  const [cartvalue, setCartValue] = useState([]);
-
 function addToCart(item) {
-  const product = arr.find((product) => product.id === item.id);
-
-  if (product) {
-    updateValue(product);
+    setCart([...cart, item]);
   }
-}
-
-function updateValue(product) {
-  const updatedProduct = {
-    ...product,
-    quantity: 1,
-  };
-
-  setCartValue((prevCart) => [...prevCart, updatedProduct]);
-}
-
-console.log(cartvalue);
 
   return (
     <div 
@@ -178,7 +160,7 @@ console.log(cartvalue);
                     borderRadius:"8px",
                     backgroundColor:"#f5f5f5",
                     padding:"16px",
-                    width:"200px",
+                    width:"300px",
                     textAlign:"center"
                 }}
                 >
@@ -188,7 +170,7 @@ console.log(cartvalue);
                 alt={item.title}
                 style={{
                     width:"100%",
-                    height:"180px",
+                    height:"280px",
                     objectFit:"cover",
                     marginBottom:"8px"
                 }}

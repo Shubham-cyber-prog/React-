@@ -5,7 +5,7 @@ function Cart(props) {
 
     <div
       style={{
-        width: "185px",
+        width: "250px",
         backgroundColor: "white",
       }}
     >

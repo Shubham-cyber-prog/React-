@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import Cart from "./components/Cart";
@@ -6,6 +6,10 @@ import Products from "./components/MainLanding";
 import MainLanding from "./components/MainLanding";
 
 const App = () => {
+  const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+
+
   return (
     <div 
     style ={{
@@ -14,7 +18,29 @@ const App = () => {
       backgroundColor:"black",
     }}
     >
-      <Navbar />
+      <Navbar  
+      cart = {cart} 
+      showCart = {showCart}
+      setShowCart = {setShowCart}
+      />
+      {showCart && <div> 
+        <h1>Shopping Cart</h1>
+        {cart.length === 0 ? (
+          <h3>Cart Empty</h3>
+        ) : (
+          <h1>
+            {cart.map((item) => (
+              <p key={item.id} style={{
+                color:"white",
+                fontSize:"20px",
+
+              }}>
+                {item.title} - Quantity: {item.quantity} {item.image && <img src={item.image} alt={item.title} style={{ width: "10vh", height: "10vh" }} />}
+              </p>
+            ))}
+          </h1>
+        )}
+      </div>}
 
       <div
         style={{
@@ -120,7 +146,46 @@ const App = () => {
           productDelivery="Free Delivery"
           producttitle="Wednesday,June 24"
         />
-        <MainLanding />      
+        <Cart
+          productimage="https://m.media-amazon.com/images/I/81s4wKEliIL._SL1315_.jpg"
+          productDescription="Dyazo 13.3 inch Laptop Bag Sleeve Sleeve Bag Cover for 13 inch Apple Mac Book Air Pro Retina 13 13.3 inch MacBook 13.3 inch and all other laptops & Notebooks with front packet and handle (Grey)"
+          productparagraph="10k + bought in past month"
+          productbutton="#1 Best Seller"
+          productprice={299}
+          productDiscount={-33}
+          producttext="prime"
+          productbuttontext="Limited Time Deal"
+          productDelivery="Free Delivery"
+          producttitle="Wednesday,June 24"
+        />
+        <Cart
+          productimage="https://m.media-amazon.com/images/I/61ULimPWODL._SX522_.jpg"
+          productDescription="Apple iPhone 17e 256 GB: 15.40 cm (6.1″) Super Retina XDR Display, A19 Chip, All-Day Battery Life, 48MP Fusion Camera, 256GB Starting Storage; Black"
+          productparagraph="500 + bought in past month"
+          productbutton="#1 Best Seller"
+          productprice={64,900}
+          productDiscount={0}
+          producttext="prime"
+          productbuttontext="Limited Time Deal"
+          productDelivery="Free Delivery"
+          producttitle="Tuesday,June 23"
+        />
+         <Cart
+          productimage="https://m.media-amazon.com/images/I/3196Gwc4aeL.jpg"
+          productDescription="EooCoo Case Compatible for New Apple MacBook Air 13 inch M5 2026-2022 M4 M3 M2, A3449 A3240 A3113 A2681 with Touch ID, Mac Air 13.6 inch Laptop Protective Plastic Hard Shell Cover Smooth-Crystal Clear"
+          productparagraph="10k + bought in past month"
+          productbutton="#1 Best Seller"
+          productprice={799}
+          productDiscount={-33}
+          producttext="prime"
+          productbuttontext="Limited Time Deal"
+          productDelivery="Free Delivery"
+          producttitle="Wednesday,June 24"
+        />
+        
+        <MainLanding   
+         cart = {cart}
+         setCart={setCart} />      
       </div>
     </div>
   );

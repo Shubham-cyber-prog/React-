@@ -4,8 +4,8 @@ function Card(props) {
   return (
     <div >
         <div style={{
-            width: "300px",
-            height: "400px",
+            width: "400px",
+            height: "500px",
             border: "1px solid black",
             backgroundColor: "lightgray",
             borderRadius: "10px",
