@@ -1,7 +1,9 @@
-import React from 'react'
+import { useState } from 'react'
 
 
-function Navbar({cart, showCart, setShowCart}) {
+function Navbar({cart, showCart, setShowCart, searchTerm, setSearchTerm}) {
+  const [query, setQuery] = useState(searchTerm);
+
   return (
     <div
       style={{
@@ -13,15 +15,39 @@ function Navbar({cart, showCart, setShowCart}) {
         justifyContent: "space-between",
         alignItems: "center",
         textDecoration: "none",
-        borderRadius: "20px",
-        position: "fixed",
+        borderRadius: "5px",
+        // position: "fixed",
         top: "0",
         left: "0",
       }
       
     }
     >
-      <h1 style={{ color: "white", fontSize: "40px",fontFamily: 'Sans-serif', }}>N A V B A R</h1>
+      <h1 style={{ color: "white", fontSize: "40px",fontFamily: 'Sans-serif',textDecoration: "underline" }}>N A V B A R</h1>
+
+
+      <input type="text" placeholder="Search..." value={query} onChange={(e) => setQuery(e.target.value)} style={{
+        padding: "5px",
+        borderRadius: "5px",
+        border: "10px solid white",
+        width: "300px",
+        backgroundColor: "white",
+        color: "black",
+
+      }} />
+  
+  
+      <button style = {{
+        backgroundColor: "blue",
+        color: "white",
+        border: "none",
+        padding: "10px 20px",
+        borderRadius: "20px",
+        fontSize: "16px",
+          cursor: "pointer",
+      }} o
+        onClick={() => setSearchTerm(query.trim())} 
+    >Search</button>
 
       <div
         style={{
@@ -32,7 +58,7 @@ function Navbar({cart, showCart, setShowCart}) {
         <a style={{  color: "white", padding: "10px 20px", marginRight: "10px," }} href="/">
           Home
         </a>
-        <a style={{  color: "white", padding: "10px 20px", marginRight: "10px" }} href="/Navbar/src/components/MainLanding.jsx">
+        <a style={{  color: "white", padding: "10px 20px", marginRight: "10px" }} href="/Navbar/src/components/MainLanding.jsx" >
           Shop
         </a>
         <a style={{  color: "white", padding: "10px 20px", marginRight: "10px" }} href="/Blog">

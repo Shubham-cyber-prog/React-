@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
-import Card from "./components/Card";
 import Cart from "./components/Cart";
-import Products from "./components/MainLanding";
 import MainLanding from "./components/MainLanding";
-
+import FormValidation from "./components/FormValidation";
 const App = () => {
+
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredCart = cart.filter((item) => {
+    const query = searchTerm.toLowerCase();
+    return (
+      item.title?.toLowerCase().includes(query) ||
+      item.category?.toLowerCase().includes(query) ||
+      item.description?.toLowerCase().includes(query)
+    );
+  });
 
 
   return (
@@ -22,14 +31,18 @@ const App = () => {
       cart = {cart} 
       showCart = {showCart}
       setShowCart = {setShowCart}
+      searchTerm={searchTerm}
+      setSearchTerm={setSearchTerm}
       />
       {showCart && <div> 
         <h1>Shopping Cart</h1>
         {cart.length === 0 ? (
           <h3>Cart Empty</h3>
+        ) : filteredCart.length === 0 ? (
+          <h3>No matching cart items</h3>
         ) : (
           <h1>
-            {cart.map((item) => (
+            {filteredCart.map((item) => (
               <p key={item.id} style={{
                 color:"white",
                 fontSize:"20px",
@@ -185,7 +198,10 @@ const App = () => {
         
         <MainLanding   
          cart = {cart}
-         setCart={setCart} />      
+                 setCart={setCart}
+                 searchTerm={searchTerm} />    
+
+                 <FormValidation />  
       </div>
     </div>
   );

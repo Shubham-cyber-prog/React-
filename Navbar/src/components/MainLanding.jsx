@@ -122,11 +122,17 @@ import { useState } from "react"
             quantity:0
         },
     ]
-   
 
-
- const MainLanding = ({cart, setCart}) => {
+ const MainLanding = ({cart, setCart, searchTerm = ""}) => {
     const [products, setProducts] = useState(product);
+    const filteredProducts = products.filter((item) => {
+        const query = searchTerm.toLowerCase();
+        return (
+          item.title.toLowerCase().includes(query)
+   
+        );
+    });
+
     function increaseQuantity(id) {
         const updatedProducts = products.map((product) => {
             if (product.id === id && product.quantity < product.stock) {
@@ -151,8 +157,11 @@ function addToCart(item) {
         marginTop:"20px"
     }}
     >
+        
         {
-            products.map((item)=>(
+            filteredProducts.length === 0 ? (
+                <p style={{ color: "white", fontSize: "18px" }}>No products match your search.</p>
+            ) : filteredProducts.map((item)=>(
                 <div 
                 key={item.id}
                  style={{
