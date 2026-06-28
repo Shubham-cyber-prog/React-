@@ -1,8 +1,12 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
+
 
 
 function Navbar({cart, showCart, setShowCart, searchTerm, setSearchTerm}) {
   const [query, setQuery] = useState(searchTerm);
+
+
 
   return (
     <div
@@ -45,9 +49,26 @@ function Navbar({cart, showCart, setShowCart, searchTerm, setSearchTerm}) {
         borderRadius: "20px",
         fontSize: "16px",
           cursor: "pointer",
-      }} o
+      }}
         onClick={() => setSearchTerm(query.trim())} 
     >Search</button>
+
+    <button style = {{
+        backgroundColor: "blue",
+        color: "white",
+        border: "none",
+        padding: "10px 20px",
+        borderRadius: "20px",
+        fontSize: "16px",
+          cursor: "pointer",
+      }}
+      onClick ={() => {
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+      }}
+    >Dark</button>
+
+
 
       <div
         style={{
@@ -55,24 +76,11 @@ function Navbar({cart, showCart, setShowCart, searchTerm, setSearchTerm}) {
           gap: "20px",
         }}
       >
-        <a style={{  color: "white", padding: "10px 20px", marginRight: "10px," }} href="/">
-          Home
-        </a>
-        <a style={{  color: "white", padding: "10px 20px", marginRight: "10px" }} href="/Navbar/src/components/MainLanding.jsx" >
-          Shop
-        </a>
-        <a style={{  color: "white", padding: "10px 20px", marginRight: "10px" }} href="/Blog">
-          Blog
-        </a>
-
-         <a style={{  color: "white", padding: "10px 20px", marginRight: "10px" }} href="/about">
-          About
-        </a>
-
-         <a style={{  color: "white",padding: "10px 20px", marginRight: "10px" }} href="/contact">
-          Contact
-        </a>
-        
+        <NavLink  to="/home" style={{ color: "white", textDecoration: "underline", fontSize: "20px" }}>Home</NavLink>
+        <NavLink to="/about" style={{ color: "white", textDecoration: "underline", fontSize: "20px" }}>About</NavLink>
+        <NavLink to="/contact" style={{ color: "white", textDecoration: "underline", fontSize: "20px" }}>Contact</NavLink>
+        <NavLink to="/cart" style={{ color: "white", textDecoration: "underline", fontSize: "20px" }}>Cart</NavLink>
+      
       </div>
       <button 
         style={{
